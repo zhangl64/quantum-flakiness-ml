@@ -2,6 +2,7 @@ import os
 import requests
 import pandas as pd
 import time
+import shutil  # Import shutil for zipping the directory
 
 # Configuration
 output_dir = 'project/dataset/'  # Main directory for storing data
@@ -26,14 +27,6 @@ dataset['PR URL'] = dataset['Repo URL'] + "/pull/" + dataset['Fix']  # Construct
 
 # Function to get the base commit SHA of a pull request
 def get_base_commit_sha(repo_name, pr_number):
-    """
-    Fetches the base commit SHA for a given pull request in a repository.
-    Retries up to 3 times in case of failure.
-
-    :param repo_name: Name of the GitHub repository (e.g., 'owner/repo')
-    :param pr_number: Pull request number
-    :return: SHA of the base commit for the PR
-    """
     api_url = f"https://api.github.com/repos/{repo_name}/pulls/{pr_number}"
     for attempt in range(3):  # Retry up to 3 times
         try:
@@ -48,25 +41,13 @@ def get_base_commit_sha(repo_name, pr_number):
 
 # Function to fetch and save a file's content from a GitHub repository
 def fetch_and_save_file(repo_name, pr_number, file_path, url, base_dir):
-    """
-    Fetches a file from GitHub and saves it to a structured directory.
-    Directory structure: repo_name/PR_number/file_name (without SHA in the name).
-
-    :param repo_name: Name of the GitHub repository
-    :param pr_number: Pull request number
-    :param file_path: Path of the file in the repository
-    :param url: URL to fetch the raw file content from
-    :param base_dir: Base directory where files should be saved
-    """
-    # Create the directory structure for the repo and PR
     repo_dir = os.path.join(base_dir, repo_name.replace('/', '_'))
     pr_dir = os.path.join(repo_dir, f"PR_{pr_number}")
     os.makedirs(pr_dir, exist_ok=True)
-    
-    # Construct the file name without the SHA
+
     file_name = file_path.replace('/', '_')
     save_path = os.path.join(pr_dir, file_name)
-    
+
     for attempt in range(3):  # Retry up to 3 times
         try:
             response = requests.get(url)
@@ -82,21 +63,13 @@ def fetch_and_save_file(repo_name, pr_number, file_path, url, base_dir):
 
 # Function to extract flaky methods from PRs and save relevant files
 def extract_flaky_methods(dataset, flaky_methods_dir):
-    """
-    Processes each row in the dataset, fetches necessary files from GitHub,
-    and saves them in an organized directory structure.
-
-    :param dataset: Pandas DataFrame containing PR data
-    :param flaky_methods_dir: Directory to save the flaky methods files
-    :return: List of records for each processed file (for creating an Excel summary)
-    """
     errors = []  # List to track any errors encountered
     added_files = []  # List to track files added in PRs (that are skipped)
     records = []  # List to store data for each processed file
-    
-    for _, row in dataset.iterrows():  # Iterate over each row in the dataset
+
+    for _, row in dataset.iterrows():
         pr_url = row['PR URL']
-        if not pd.isna(pr_url):  # Only process valid PR URLs
+        if not pd.isna(pr_url):
             print(f"Processing {pr_url}...")
             repo_name = row['Repo']
             pr_number = row['Fix']
@@ -106,21 +79,18 @@ def extract_flaky_methods(dataset, flaky_methods_dir):
                 response = requests.get(api_url, headers=headers)
                 response.raise_for_status()
                 files = response.json()  # Get the list of files modified in the PR
-                
+
                 for file in files:
                     if file['filename'].endswith('.py'):  # Process only Python files
                         file_path = file['filename']
                         if file['status'] == 'added':  # Skip files added in the PR
                             added_files.append(f"File added in pull request: {file_path} at {pr_url}")
                             continue
-                        
-                        # Construct the raw URL to fetch the file content
+
                         raw_url = f"https://raw.githubusercontent.com/{repo_name}/{base_commit_sha}/{file_path}"
-                        
-                        # Fetch and save the file
+
                         fetch_and_save_file(repo_name, pr_number, file_path, raw_url, flaky_methods_dir)
-                        
-                        # Record data for creating an Excel summary
+
                         records.append({
                             'Repo Name': repo_name,
                             'PR URL': pr_url,
@@ -131,25 +101,30 @@ def extract_flaky_methods(dataset, flaky_methods_dir):
             except Exception as e:
                 errors.append(f"Failed to process {pr_url}: {e}")  # Log errors
 
-    if added_files:  # If any files were skipped, log them
+    if added_files:
         print("\nFiles added in pull requests (skipped):")
         for file in added_files:
             print(file)
 
-    if errors:  # If any errors occurred, log them
+    if errors:
         print("\nErrors encountered during processing:")
         for error in errors:
             print(error)
-    
-    # Return the collected records for further processing (e.g., creating an Excel summary)
+
     return records
 
 # Extract flaky methods and collect data for Excel
 records = extract_flaky_methods(dataset, flaky_methods_dir)
 
 # Step 2: Save the collected records to an Excel file for documentation
-df = pd.DataFrame(records)  # Convert the list of records to a DataFrame
+df = pd.DataFrame(records)
 output_excel_path = os.path.join(output_dir, 'flaky_links.xlsx')
-df.to_excel(output_excel_path, index=False)  # Save the DataFrame to an Excel file
+df.to_excel(output_excel_path, index=False)
 
-print(f"Excel file created: {output_excel_path}")  # Confirm Excel file creation
+print(f"Excel file created: {output_excel_path}")
+
+# Step 3: Zip the flaky methods directory
+zip_file_path = os.path.join(output_dir, 'flaky_methods.zip')
+shutil.make_archive(zip_file_path.replace('.zip', ''), 'zip', flaky_methods_dir)
+
+print(f"Flaky methods directory zipped: {zip_file_path}")
