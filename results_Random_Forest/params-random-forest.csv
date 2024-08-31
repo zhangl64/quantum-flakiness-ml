@@ -1,0 +1,2 @@
+n_estimators,criterion,max_depth,min_samples_split,min_samples_leaf,avgFlakyTrain,avgNonFlakyTrain,avgFlakyTest,avgNonFlakyTest,precision,recall,accuracy,storage,preparationTime,predictionTime
+100,gini,None,2,1,81.0,75.0,20.0,19.0,0.48727896650627395,0.5233333333333333,0.4743589743589744,913613,0.2557107233342927,0.0014557209401783225

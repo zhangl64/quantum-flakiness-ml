@@ -1,0 +1,1 @@
+distance,k,sigma,eps,avgFlakyTrain,avgNonFlakyTrain,avgFlakyTest,avgNonFlakyTest,precision,recall,accuracy,storage,preparationTime,predictionTime
