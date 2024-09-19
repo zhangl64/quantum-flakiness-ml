@@ -4,7 +4,7 @@ import pandas as pd
 import time
 
 # Configuration
-output_dir = 'dataset/project/'
+output_dir = ''
 non_flaky_methods_dir = os.path.join(output_dir, 'non-flakyMethods')
 
 # GitHub API configuration
