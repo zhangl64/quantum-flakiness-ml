@@ -1,0 +1,2 @@
+criterion,max_depth,min_samples_split,min_samples_leaf,max_features,threshold,accuracy,precision,recall,f1,mcc,preparationTime
+entropy,100,2,10,log2,0.2,0.4787234042553192,0.48717948717948717,0.8085106382978723,0.6771653543307087,-0.05661385170722979,0.0021323320106312943
