@@ -1,0 +1,5 @@
+Model,Fold,Accuracy,Precision,Recall,F1,MCC,Parameters
+larger SVM,5-fold,0.9666666666666668,0.8888888888888888,0.8888888888888888,0.8888888888888888,0.869281045751634,"{'C': 10.0, 'kernel': 'rbf', 'threshold': 0.4, 'fold': 3}"
+larger XGBoost,5-fold,0.9833333333333332,1.0,0.8888888888888888,0.9411764705882352,0.9336995618478524,"{'eta': 0.1, 'max_depth': 7.0, 'n_estimators': 100.0, 'threshold': 0.4, 'fold': 4}"
+larger Random Forest,5-fold,1.0,1.0,1.0,1.0,1.0,"{'n_estimators': 50, 'criterion': 'entropy', 'max_depth': 10, 'min_samples_split': 2, 'min_samples_leaf': 1, 'threshold': 0.3, 'fold': 4}"
+larger Decision Tree,5-fold,0.9344262295081968,0.875,0.7,0.7777777777777778,0.7462106764573243,"{'criterion': 'entropy', 'max_depth': 10.0, 'min_samples_split': 2, 'min_samples_leaf': 1, 'max_features': 'log2', 'threshold': 0.1, 'fold': 1}"
