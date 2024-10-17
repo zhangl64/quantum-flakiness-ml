@@ -1,0 +1,8 @@
+Model,Best Accuracy,Best Precision,Best Recall,Best F1 Score,Best MCC Score,Best Parameters
+,,,,,,
+KNN,0.906440678,0.772857143,0.577777778,0.651518219,0.613209829,"{'pca__n_components': 220, 'n_neighbors': 11, 'weights': 'distance', 'metric': 'cosine', 'threshold': 0.8, 'accuracy': 0.9064406779661016, 'precision': 0.7728571428571429, 'recall': 0.5777777777777777, 'f1': 0.6515182186234818, 'mcc': 0.6132098289270198}"
+SVM,0.89960452,0.653540904,0.822222222,0.710858586,0.671748676,"{'pca__n_components': 180, 'kernel': 'rbf', 'C': 10.0, 'threshold': 0.1, 'accuracy': 0.8996045197740112, 'precision': 0.6535409035409036, 'recall': 0.8222222222222222, 'f1': 0.7108585858585859, 'mcc': 0.6717486762823186}"
+XGB,0.929830508,0.808549784,0.711111111,0.749215686,0.715704919,"{'pca__n_components': 180.0, 'max_depth': 5.0, 'learning_rate': 0.1, 'n_estimators': 300.0, 'threshold': 0.2, 'accuracy': 0.9298305084745764, 'precision': 0.8085497835497837, 'recall': 0.711111111111111, 'f1': 0.7492156862745099, 'mcc': 0.7157049193417857}"
+,,,,,,
+Decision Tree,0.963276836,0.94,0.822222222,0.872074303,0.85665159,"{'dt__max_depth': 10, 'dt__min_samples_split': 2, 'dt__min_samples_leaf': 1, 'dt__criterion': 'gini', 'threshold': 0.1, 'accuracy': 0.963276836158192, 'precision': 0.94, 'recall': 0.8222222222222222, 'f1': 0.8720743034055728, 'mcc': 0.856651589504783}"
+Random Forest,0.956553672,0.877272727,0.844444444,0.849411765,0.831830617,"{'rf__n_estimators': 10, 'rf__max_depth': 10, 'rf__min_samples_split': 2, 'rf__min_samples_leaf': 1, 'rf__criterion': 'entropy', 'threshold': 0.6, 'accuracy': 0.956553672316384, 'precision': 0.8772727272727273, 'recall': 0.8444444444444444, 'f1': 0.8494117647058823, 'mcc': 0.8318306166211602}"
