@@ -1,9 +1,9 @@
 # quantum-flakiness-ml
 File Descriptions
 
-Threshold - models with threshold implement
-Smote - models with somte 
-Regular model - model without resolving imbalance situation
+Regular model - model without resolving imbalance situation based on FLAST
+Final model - Model resloving imbalance situation using SMOTE and Threshold
+
 
 Compressed dataset - Dataset to zip file
 Dataset list - File with list of where dataset is from
