@@ -20,29 +20,29 @@ Directory Structure
 The dirctory is structured as follows:
 
 quantum-flakiness-ml
-|
-|---- DatasetList       |    \Lists of dataset that we used for this project
-|                       |---- code for data retireval\ codes we created to extract flaky and nonflaky dataset from github
-|
-|---- Regular model     |    \Machine Learning model that does not use SMOTE and Threshold, includes balance and imbalanced dataset
-|                       |---- Dataset   \Dataset that is extracted from DatasetList, after filtering out setup or util files
-|                       |---- RegularModel_PCA   \scripts to run experience include preprocessing and KNN, SVM and XGB
-|                       |---- RegularModel_nonPCA   \ scripts to run experience include preprocessing and RF and DT
-|                       |---- results   \result of machine learning models in .csv file  
-|
-|---- SMOTE model       |    \ Machine learning model include SMOTE approach
-|                       |---- Dataset   \Dataset that is extracted from DatasetList, after filtering out setup or util files
-|                       |---- SMOTE    \scripts with SMOTE implementation and scripts to run experience include preprocessing
-|                       |---- results   \result of machine learning models in .csv file  
-|
-|---- Thershold         |    \ Machine learing model include Threshold adjustment
-|                       |---- Dataset   \Dataset that is extracted from DatasetList, after filtering out setup or util files
-|                       |---- Thershold_PCA  \scripts to run experience include preprocessing and KNN, SVM and XGB
-|                       |---- Threshold_nonPCA   \ scripts to run experience include preprocessing and RF and DT
-|                       |---- results   \result of machine learning models in .csv file 
-|
-|---- SMOTE+Threshold   |    \Machine learning model include Threshold and SMOTE approach simultainiously
-|                       |---- Dataset   \Dataset that is extracted from DatasetList, after filtering out setup or util files
-|                       |---- PCA_Models   \scripts to run experience include preprocessing and KNN, SVM and XGB
-|                       |---- non_PCA_Models    \ scripts to run experience include preprocessing and RF and DT
-|                       |---- results   \result of machine learning models in .csv file 
+    |
+    |---- DatasetList       |    \Lists of dataset that we used for this project
+    |                       |---- code for data retireval\ codes we created to extract flaky and nonflaky dataset from github
+    |
+    |---- Regular model     |    \Machine Learning model that does not use SMOTE and Threshold, includes balance and imbalanced dataset
+    |                       |---- Dataset   \Dataset that is extracted from DatasetList, after filtering out setup or util files
+    |                       |---- RegularModel_PCA   \scripts to run experience include preprocessing and KNN, SVM and XGB
+    |                       |---- RegularModel_nonPCA   \ scripts to run experience include preprocessing and RF and DT
+    |                       |---- results   \result of machine learning models in .csv file  
+    |
+    |---- SMOTE model       |    \ Machine learning model include SMOTE approach
+    |                       |---- Dataset   \Dataset that is extracted from DatasetList, after filtering out setup or util files
+    |                       |---- SMOTE    \scripts with SMOTE implementation and scripts to run experience include preprocessing
+    |                       |---- results   \result of machine learning models in .csv file  
+    |
+    |---- Thershold         |    \ Machine learing model include Threshold adjustment
+    |                       |---- Dataset   \Dataset that is extracted from DatasetList, after filtering out setup or util files
+    |                       |---- Thershold_PCA  \scripts to run experience include preprocessing and KNN, SVM and XGB
+    |                       |---- Threshold_nonPCA   \ scripts to run experience include preprocessing and RF and DT
+    |                       |---- results   \result of machine learning models in .csv file 
+    |
+    |---- SMOTE+Threshold   |    \Machine learning model include Threshold and SMOTE approach simultainiously
+    |                       |---- Dataset   \Dataset that is extracted from DatasetList, after filtering out setup or util files
+    |                       |---- PCA_Models   \scripts to run experience include preprocessing and KNN, SVM and XGB
+    |                       |---- non_PCA_Models    \ scripts to run experience include preprocessing and RF and DT
+    |                       |---- results   \result of machine learning models in .csv file 
