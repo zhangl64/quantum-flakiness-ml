@@ -1,0 +1,1 @@
+{"pca__n_components": 150, "xgb__learning_rate": 0.1, "xgb__max_depth": 3, "xgb__n_estimators": 150}

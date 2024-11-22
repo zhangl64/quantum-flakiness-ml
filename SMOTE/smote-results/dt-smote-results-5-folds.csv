@@ -1,2 +1,0 @@
-dt__max_depth,dt__min_samples_split,dt__min_samples_leaf,dt__criterion,dt__max_features,accuracy,precision,recall,f1,mcc
-10,5,2,gini,,0.955111917725348,0.9199999999999999,0.8444444444444443,0.8495475113122172,0.8454298941250029

@@ -1,0 +1,1 @@
+{"knn__metric": "euclidean", "knn__n_neighbors": 3, "knn__weights": "distance", "pca__n_components": 150}

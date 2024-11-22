@@ -1,0 +1,1 @@
+{"knn__metric": "cosine", "knn__n_neighbors": 11, "knn__weights": "distance", "pca__n_components": 150}
