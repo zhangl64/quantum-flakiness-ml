@@ -10,8 +10,11 @@ It contains all the material required to reproduce the experiements include: dat
 
 ## Reproducing results
 1. Our experiences are using *python 3.12.2*. You can get the appropriate version for your OS [here](https://www.python.org/downloads/).
-2. Based on python, our experience was conducted through *jupyter notebook*. You can get the notebook using PIP command (pip install notebook)
-3. In inpyb file, first cells in each model is to preprocessing. First cell must run first before any other cell
+2. clone the repository
+  [here](https://github.com/zhangl64/quantum-flakiness-ml).
+3. Install the additional python packages required:
+ [here](python -m pip install -r requirements.txt).
+4. In inpyb file, first cells in each model is to preprocessing. First cell must run first before any other cell
 
 ## Dataset
 our dataset is in each folder name after method (in compresed format in Dataset folder). Running first cell of the code will create extracted folder which is to train the model. 
@@ -26,25 +29,14 @@ The dirctory is structured as follows:
         |---- DatasetList       |    \Lists of dataset that we used for this project
         |                       |---- code for data retireval\ codes we created to extract flaky and nonflaky dataset from github
         |
-        |---- Regular model     |    \Machine Learning model that does not use SMOTE and Threshold, includes balance and imbalanced dataset
+        |---- Regular model     |    \Machine Learning model that does not use SMOTE or any other method to reslove imbalance dataset
         |                       |---- Dataset   \Dataset that is extracted from DatasetList, after filtering out setup or util files
-        |                       |---- RegularModel_PCA   \scripts to run experience include preprocessing and KNN, SVM and XGB
-        |                       |---- RegularModel_nonPCA   \ scripts to run experience include preprocessing and RF and DT
+        |                       |---- VanillaModels.inpyb \ Machine Learning model that does not use SMOTE and Threshold, includes balance and imbalanced dataset
+        |                       |----Threshold.inpyb \ Machine learing model include Threshold adjustment
         |                       |---- results   \result of machine learning models in .csv file  
         |
-        |---- SMOTE model       |    \ Machine learning model include SMOTE approach
+        |---- SMOTE             |    \ Machine learning model include SMOTE approach
         |                       |---- Dataset   \Dataset that is extracted from DatasetList, after filtering out setup or util files
-        |                       |---- SMOTE    \scripts with SMOTE implementation and scripts to run experience include preprocessing
+        |                       |---- SMOTE.inpyb    \scripts with SMOTE implementation and scripts to run experience include preprocessing
+        |                       | \Machine learning model include Threshold and SMOTE approach simultainiously
         |                       |---- results   \result of machine learning models in .csv file  
-        |
-        |---- Thershold         |    \ Machine learing model include Threshold adjustment
-        |                       |---- Dataset   \Dataset that is extracted from DatasetList, after filtering out setup or util files
-        |                       |---- Thershold_PCA  \scripts to run experience include preprocessing and KNN, SVM and XGB
-        |                       |---- Threshold_nonPCA   \ scripts to run experience include preprocessing and RF and DT
-        |                       |---- results   \result of machine learning models in .csv file 
-        |
-        |---- SMOTE+Threshold   |    \Machine learning model include Threshold and SMOTE approach simultainiously
-        |                       |---- Dataset   \Dataset that is extracted from DatasetList, after filtering out setup or util files
-        |                       |---- PCA_Models   \scripts to run experience include preprocessing and KNN, SVM and XGB
-        |                       |---- non_PCA_Models    \ scripts to run experience include preprocessing and RF and DT
-        |                       |---- results   \result of machine learning models in .csv file 
