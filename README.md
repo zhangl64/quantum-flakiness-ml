@@ -1,10 +1,10 @@
-# detect flaky test in quantum software using classical machine learning approaches
+# Detect flaky tests in quantum software using classical machine learning approaches
 
 ## Abstract 
- This repository is a compaionon page for submission "Identifying Flaky Tests in Quantum Code: A
+ This repository is a companion page for the submission "Identifying Flaky Tests in Quantum Code: A
 Machine Learning Approach.
 
-It contains all the material required to reproduce the experiements include: dataset, algorithms, and implementation
+It contains all the material required to reproduce the experiments including: dataset, algorithms, and implementation
 
 
 
@@ -13,31 +13,31 @@ It contains all the material required to reproduce the experiements include: dat
 1. Our experiences are using *python 3.12.2*. You can get the appropriate version for your OS [here](https://www.python.org/downloads/).
 2. clone the repository
   - `git clone  https://github.com/zhangl64/quantum-flakiness-ml'
-3. Install the additional python packages required:
+3. Install the additional Python packages required:
   - `python3 -m pip install -r requirements.txt`
-4. In inpyb file, first cells in each model is to preprocessing. First cell must run first before any other cell
+4. In each ipynb file, the first cells in each model are for preprocessing. The first cell must run before any other cell.
 
 ## Dataset
-our dataset is in each folder name after method (in compresed format in Dataset folder). Running first cell of the code will create extracted folder which is to train the model. 
+Our dataset is in each folder name after the method (in compressed format in the  Dataset folder). Running the first cell of the code will create extracted folder which is to train the model. 
 
 
 Directory Structure
 -----------------------
-The dirctory is structured as follows:
+The directory is structured as follows:
 
     quantum-flakiness-ml
         |
-        |---- DatasetList       |    \Lists of dataset that we used for this project
-        |                       |---- code for data retireval\ codes we created to extract flaky and nonflaky dataset from github
+        |---- DatasetList       |    \Lists of datasets that we used for this project
+        |                       |---- code for data retireval\ codes we created to extract flaky and nonflaky datasets from GitHub
         |
-        |---- Regular model     |    \Machine Learning model that does not use SMOTE or any other method to reslove imbalance dataset
+        |---- Regular model     |    \Models with vanilla and threshold-tuning implementations
         |                       |---- Dataset              \Dataset that is extracted from DatasetList, after filtering out setup or util files
-        |                       |---- VanillaModels.inpyb  \ Machine Learning model that does not use SMOTE and Threshold, includes balance and imbalanced dataset
-        |                       |----Threshold.inpyb       \ Machine learing model include Threshold adjustment
-        |                       |---- results              \result of machine learning models in .csv file  
+        |                       |---- VanillaModels.ipynb  \Baseline model implementations for both balanced and imbalanced datasets (no balancing techniques applied)
+        |                       |---- Threshold.ipynb      \Models with Threshold-tuning
+        |                       |---- results              \Results for the Vanilla and Threshold models in .csv file  
         |
-        |---- SMOTE             |    \ Machine learning model include SMOTE approach and Machine learning model include Threshold and SMOTE approach simultainiously
+        |---- SMOTE             |    \Models with SMOTE and hybrid implementations (both SMOTE & threshold-tuning)
         |                       |---- Dataset       \Dataset that is extracted from DatasetList, after filtering out setup or util files
-        |                       |---- SMOTE.inpyb   \scripts with SMOTE implementation and scripts to run experience include preprocessing
-        |                       |---- hybrid.inpyb  \ Machine learning model include Threshold and SMOTE approach simultainiously
-        |                       |---- results       \result of machine learning models in .csv file  
+        |                       |---- SMOTE.ipynb   \Models with SMOTE 
+        |                       |---- hybrid.ipynb  \Hydrid models with SMOTE and Threshold-tuning implementations
+        |                       |---- results       \Results of SMOTE and hybrid models in .csv file  
