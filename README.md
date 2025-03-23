@@ -30,13 +30,13 @@ The directory is structured as follows:
         |---- DatasetList       |    \Lists of datasets that we used for this project
         |                       |---- code for data retireval\ codes we created to extract flaky and nonflaky datasets from GitHub
         |
-        |---- Regular model     |    \Models with vanilla and threshold-tuning implementations
+        |---- Vanilla+Threshold |    \Models with vanilla and threshold-tuning implementations
         |                       |---- Dataset              \Dataset that is extracted from DatasetList, after filtering out setup or util files
         |                       |---- VanillaModels.ipynb  \Baseline model implementations for both balanced and imbalanced datasets (no balancing techniques applied)
         |                       |---- Threshold.ipynb      \Models with Threshold-tuning
         |                       |---- results              \Results for the Vanilla and Threshold models in .csv file  
         |
-        |---- SMOTE             |    \Models with SMOTE and hybrid implementations (both SMOTE & threshold-tuning)
+        |---- SMOTE+Hybrid      |    \Models with SMOTE and hybrid implementations (both SMOTE & threshold-tuning)
         |                       |---- Dataset       \Dataset that is extracted from DatasetList, after filtering out setup or util files
         |                       |---- SMOTE.ipynb   \Models with SMOTE 
         |                       |---- hybrid.ipynb  \Hydrid models with SMOTE and Threshold-tuning implementations
